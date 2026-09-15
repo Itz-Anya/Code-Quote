@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>CodeQuote · Beautiful Coding Quotes for GitHub README</title>
+<meta name="description" content="CodeQuote generates a self-contained, dynamically rendered SVG coding-quote card you can embed directly in a GitHub README, with no database, no accounts, and no build step.">
+<meta name="keywords" content="github readme, svg card, coding quotes, readme widget, developer tools, github stats, open source, programming quotes">
+<meta name="author" content="CodeQuote contributors">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0d1117">
+<link rel="canonical" href="{{ canonical_url }}/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ canonical_url }}/">
+<meta property="og:site_name" content="CodeQuote">
+<meta property="og:title" content="CodeQuote · Beautiful Coding Quotes for GitHub README">
+<meta property="og:description" content="A self-contained SVG coding-quote card for your GitHub README. Random quote on every load, no database, no accounts.">
+<meta property="og:image" content="{{ canonical_url }}/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="CodeQuote · beautiful coding quotes for your GitHub README">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CodeQuote · Beautiful Coding Quotes for GitHub README">
+<meta name="twitter:description" content="A self-contained SVG coding-quote card for your GitHub README. Random quote on every load, no database, no accounts.">
+<meta name="twitter:image" content="{{ canonical_url }}/og-image.jpg">
+<meta name="twitter:image:alt" content="CodeQuote · beautiful coding quotes for your GitHub README">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+
+<link rel="stylesheet" href="/style.css">
+<link rel="preload" href="/fonts/outfit-regular.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/fonts/bricolage-bold.woff" as="font" type="font/woff" crossorigin>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "CodeQuote",
+  "url": "{{ canonical_url }}/",
+  "image": "{{ canonical_url }}/og-image.jpg",
+  "description": "Generates a self-contained SVG coding-quote card for embedding in a GitHub README.",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "sameAs": ["{{ github_url }}"]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="navbar">
+  <div class="container">
+    <a class="brand" href="/">
+      <img src="/logo.png" alt="CodeQuote logo" width="36" height="36">
+      <span>CodeQuote</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#features">Features</a>
+      <a href="#api">API</a>
+      <a href="#opensource">Open Source</a>
+      <a class="nav-github" href="{{ github_url }}" target="_blank" rel="noopener">
+        {% include "icons/github.svg" %}
+        GitHub
+      </a>
+    </nav>
+
+    <div class="nav-right">
+      <div class="theme-switch" role="group" aria-label="Theme">
+        <button type="button" data-mode="dark" aria-label="Dark theme" aria-pressed="false" title="Dark">
+          {% include "icons/moon.svg" %}
+        </button>
+        <button type="button" data-mode="light" aria-label="Light theme" aria-pressed="false" title="Light">
+          {% include "icons/sun.svg" %}
+        </button>
+        <button type="button" data-mode="system" aria-label="Match system theme" aria-pressed="false" title="System">
+          {% include "icons/monitor.svg" %}
+        </button>
+      </div>
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel">
+        <span class="nav-toggle-icon icon-menu">{% include "icons/menu.svg" %}</span>
+        <span class="nav-toggle-icon icon-close">{% include "icons/close.svg" %}</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-overlay" id="mobilePanel" aria-hidden="true">
+  <div class="mobile-overlay-backdrop" data-close-overlay></div>
+  <div class="mobile-overlay-panel" role="dialog" aria-modal="true" aria-label="Site menu">
+    <div class="mobile-overlay-head">
+      <a class="brand" href="/">
+        <img src="/logo.png" alt="CodeQuote logo" width="30" height="30">
+        <span>CodeQuote</span>
+      </a>
+      <button type="button" class="nav-toggle" id="mobileCloseBtn" aria-label="Close menu">
+        {% include "icons/close.svg" %}
+      </button>
+    </div>
+    <nav class="mobile-overlay-links" aria-label="Mobile">
+      <a href="#features">Features</a>
+      <a href="#api">API</a>
+      <a href="#opensource">Open Source</a>
+      <a href="{{ github_url }}" target="_blank" rel="noopener">
+        {% include "icons/github.svg" %}
+        GitHub
+      </a>
+    </nav>
+    <div class="mobile-overlay-foot">
+      <div class="theme-switch" role="group" aria-label="Theme">
+        <button type="button" data-mode="dark" aria-label="Dark theme" aria-pressed="false" title="Dark">
+          {% include "icons/moon.svg" %}
+        </button>
+        <button type="button" data-mode="light" aria-label="Light theme" aria-pressed="false" title="Light">
+          {% include "icons/sun.svg" %}
+        </button>
+        <button type="button" data-mode="system" aria-label="Match system theme" aria-pressed="false" title="System">
+          {% include "icons/monitor.svg" %}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-copy">
+        <img src="/logo-hero.png" alt="CodeQuote illustrated mark: a developer and a black cat under a starry night sky, surrounded by code motifs" class="hero-art" width="900" height="900" loading="eager">
+
+        <h1 class="headline">Beautiful coding quotes for your GitHub README.</h1>
+        <p class="lede">CodeQuote renders a random programming quote as a self-contained SVG card on every request. Drop one image tag into your README and it just works, with no JavaScript, no database, and no account.</p>
+        <div class="cta-row">
+          <button type="button" class="btn btn-primary" data-action="new-quote">
+            {% include "icons/shuffle.svg" %}
+            Generate a quote
+          </button>
+          <a class="btn btn-secondary" href="{{ github_url }}" target="_blank" rel="noopener">
+            {% include "icons/github.svg" %}
+            View on GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal">
+        <div class="preview-frame hero-card">
+          <div class="preview-chrome">
+            <div class="preview-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="preview-url mono" id="previewUrl">GET /api/quote.svg</div>
+          </div>
+          <div class="preview-body">
+            <div class="preview-skeleton" id="previewSkeleton" aria-hidden="true"></div>
+            <img id="quoteImg" src="/api/quote.svg" alt="A randomly generated coding quote, rendered as an SVG card" width="600" height="220">
+          </div>
+          <div class="preview-toolbar">
+            <label class="preview-theme-label" for="themeSelect">Card theme</label>
+            <select id="themeSelect" class="theme-select mono" aria-label="SVG card theme">
+              <option value="dark">dark</option>
+              <option value="light">light</option>
+              <option value="github">github (auto)</option>
+              <option value="dracula">dracula</option>
+              <option value="nord">nord</option>
+              <option value="monokai">monokai</option>
+              <option value="solarized">solarized</option>
+              <option value="gruvbox">gruvbox</option>
+              <option value="onedark">one dark</option>
+              <option value="tokyonight">tokyo night</option>
+              <option value="catppuccin">catppuccin</option>
+              <option value="synthwave">synthwave</option>
+              <option value="ayu">ayu</option>
+              <option value="rosepine">rose pine</option>
+            </select>
+          </div>
+          <div class="preview-actions">
+            <span class="preview-hint">Refresh for a new quote, or use the controls.</span>
+            <div class="cta-row" style="gap:8px;">
+              <button type="button" class="btn btn-ghost" data-action="new-quote" style="padding:7px 12px;">
+                {% include "icons/shuffle.svg" %}
+                New quote
+              </button>
+              <button type="button" class="btn btn-ghost" id="openSvgBtn" style="padding:7px 12px;">
+                {% include "icons/external.svg" %}
+                Open SVG
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="readme" class="alt">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="section-kicker">01 · README usage</p>
+        <h2 class="section-title">Add it to your README in one line</h2>
+        <p class="section-desc">Paste the Markdown snippet below anywhere in your <code class="mono">README.md</code>. GitHub re-fetches the image on every view, so the quote changes over time.</p>
+      </div>
+
+      <div class="usage-grid">
+        <div class="codeblock reveal">
+          <div class="codeblock-head">
+            <span class="codeblock-label">markdown</span>
+            <button type="button" class="copy-btn" data-copy-target="mdSnippet">
+              {% include "icons/copy.svg" %}
+              <span class="copy-label">Copy</span>
+            </button>
+          </div>
+          <pre><code id="mdSnippet">![Coding Quote](<span class="tok-string">{{ canonical_url }}/api/quote.svg</span>)</code></pre>
+        </div>
+
+        <div class="readme-mock reveal">
+          <div class="readme-mock-head">
+            {% include "icons/file.svg" %}
+            README.md preview
+          </div>
+          <div class="readme-mock-body">
+            <img src="/api/quote.svg?width=520" alt="Preview of the CodeQuote card as it would appear inside a rendered README" width="520" height="200" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="api">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="section-kicker">02 · API</p>
+        <h2 class="section-title">A single, predictable endpoint</h2>
+        <p class="section-desc">No API key, no rate-limit headers to manage, no request body. One <code class="mono">GET</code> request returns one SVG.</p>
+      </div>
+
+      <div class="api-card reveal">
+        <div class="api-endpoint">
+          <span class="method-badge">GET</span>
+          <span class="api-path">/api/quote.svg</span>
+        </div>
+
+        <div class="api-body">
+          <div class="codeblock">
+            <div class="codeblock-head"><span class="codeblock-label">example request</span></div>
+            <pre><code><span class="tok-method">curl</span> -i <span class="tok-string">"{{ canonical_url }}/api/quote.svg?theme=github"</span></code></pre>
+          </div>
+
+          <div class="codeblock">
+            <div class="codeblock-head"><span class="codeblock-label">response headers</span></div>
+            <pre><code><span class="tok-key">Content-Type</span>: image/svg+xml
+<span class="tok-key">Cache-Control</span>: no-cache</code></pre>
+          </div>
+
+          <div>
+            <table class="params-table">
+              <caption class="section-desc" style="text-align:left; margin-bottom:10px;">Query parameters</caption>
+              <thead>
+                <tr><th scope="col">Parameter</th><th scope="col">Values</th><th scope="col">Default</th></tr>
+              </thead>
+              <tbody>
+                <tr><td class="param-name"><code>theme</code></td><td class="param-desc">dark, light, github, dracula, nord, monokai, solarized, gruvbox, onedark, tokyonight, catppuccin, synthwave, ayu, rosepine</td><td class="param-desc"><code>dark</code></td></tr>
+                <tr><td class="param-name"><code>author</code></td><td class="param-desc">substring match, e.g. <code>Torvalds</code></td><td class="param-desc">any</td></tr>
+                <tr><td class="param-name"><code>font</code></td><td class="param-desc">sans, serif, mono</td><td class="param-desc"><code>sans</code></td></tr>
+                <tr><td class="param-name"><code>width</code></td><td class="param-desc">380–900 (px)</td><td class="param-desc"><code>600</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="alt">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="section-kicker">03 · Features</p>
+        <h2 class="section-title">What you get</h2>
+      </div>
+
+      <div class="features-grid reveal">
+        <div class="feature-card">
+          <div class="feature-icon">{% include "icons/shuffle.svg" %}</div>
+          <h3>Random on every request</h3>
+          <p>A fresh quote is selected from a curated set each time the endpoint is hit.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">{% include "icons/code.svg" %}</div>
+          <h3>Self-contained SVG</h3>
+          <p>No external images or fonts, so the card renders identically anywhere it's embedded.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">{% include "icons/file.svg" %}</div>
+          <h3>README-ready</h3>
+          <p>Built specifically to sit inside a Markdown image tag on GitHub, GitLab, or npm.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">{% include "icons/sliders.svg" %}</div>
+          <h3>Themeable</h3>
+          <p>Switch between dark, light, or an auto-adapting GitHub-aware theme via a query parameter.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">{% include "icons/shield.svg" %}</div>
+          <h3>No account, no database</h3>
+          <p>Nothing to sign up for and nothing about you gets stored.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">{% include "icons/github.svg" %}</div>
+          <h3>Open source</h3>
+          <p>MIT licensed. Read the code, self-host it, or send a pull request.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="opensource">
+    <div class="container">
+      <div class="oss-card reveal">
+        <div class="oss-copy">
+          <h2>Built in the open</h2>
+          <p>CodeQuote is a small, MIT-licensed project. Browse the source, open an issue, or contribute a new quote.</p>
+        </div>
+        <div class="oss-actions">
+          <a class="btn btn-primary" href="{{ github_url }}" target="_blank" rel="noopener">
+            {% include "icons/github.svg" %}
+            View repository
+          </a>
+          <a class="btn btn-secondary" href="{{ github_url }}/issues" target="_blank" rel="noopener">
+            Report an issue
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">
+          <img src="/logo.png" alt="CodeQuote logo" width="22" height="22">
+          <span>CodeQuote</span>
+        </div>
+        <p class="footer-desc">A self-contained SVG coding-quote card for GitHub READMEs. Open source and free to self-host.</p>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Project</h4>
+          <a href="{{ github_url }}" target="_blank" rel="noopener">GitHub</a>
+          <a href="{{ github_url }}/blob/main/LICENSE" target="_blank" rel="noopener">License</a>
+        </div>
+        <div class="footer-col">
+          <h4>API</h4>
+          <a href="/api/quote.svg">/api/quote.svg</a>
+          <a href="#api">Documentation</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© {{ current_year }} CodeQuote · Open source under MIT</span>
+      <a href="{{ github_url }}" target="_blank" rel="noopener">github.com/Itz-Anya/Code-Quote</a>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite">
+  {% include "icons/check.svg" %}
+  <span class="toast-text">Copied</span>
+</div>
+
+<script src="/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.Python
+.venv/
+venv/
+env/
+
+# Vercel
+.vercel/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+
+# Test artifacts
+.pytest_cache/
+htmlcov/
+.coverage
