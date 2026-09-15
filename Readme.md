@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./logo-hero.png" alt="CodeQuote illustrated mark: a developer and a black cat under a starry night sky, surrounded by code motifs" width="480">
+<img src="public/logo-hero.png" width="480">
 
 # CodeQuote
 
@@ -15,7 +15,13 @@ Drop one image tag into your README and it just works — no JavaScript, no data
 
 </div>
 
----
+## 🌐 Live Website 
+
+<div align="center">
+
+[![Visit Website](https://img.shields.io/badge/Click_here_to_view_live_website-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://codequote.vercel.app/)
+
+</div>
 
 ## ✨ Features
 
@@ -35,7 +41,7 @@ Drop one image tag into your README and it just works — no JavaScript, no data
 Paste the snippet below anywhere in your `README.md`. GitHub re-fetches the image on every view, so the quote changes over time.
 
 ```md
-![Coding Quote](https://your-domain.com/api/quote.svg)
+![Coding Quote](https://codequote.vercel.app/api/quote.svg)
 ```
 
 That's it — no setup, no API key, no build step.
@@ -55,7 +61,7 @@ GET /api/quote.svg
 **Example request**
 
 ```bash
-curl -i "https://your-domain.com/api/quote.svg?theme=github"
+curl -i "https://codequote.vercel.app/api/quote.svg?theme=github"
 ```
 
 **Response headers**
