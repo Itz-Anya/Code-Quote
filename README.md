@@ -15,7 +15,13 @@ Drop one image tag into your README and it just works — no JavaScript, no data
 
 </div>
 
----
+## 🌐 Live Website 
+
+<div align="center">
+
+[![Visit Website](https://img.shields.io/badge/Click_here_to_view_live_website-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://codequote.vercel.app/)
+
+</div>
 
 ## ✨ Features
 
