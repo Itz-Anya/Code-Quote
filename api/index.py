@@ -252,11 +252,28 @@ def quote_svg():
     q = pick_quote(author_filter)
     svg = generate_svg(q["quote"], q["author"], theme=theme, width=width, font=font)
 
-    return Response(
-        svg,
-        mimetype="image/svg+xml",
-        headers={"Cache-Control": "no-cache"},
-    )
+    response = Response(svg, mimetype="image/svg+xml")
+
+    # GitHub doesn't fetch your image directly when it's embedded in a README -
+    # it routes it through its own image proxy ("Camo"), which caches whatever
+    # it fetches and serves that cached copy to everyone afterwards. A soft
+    # "no-cache" isn't enough to stop that, since Camo (and Fastly in front of
+    # it) treats it as "revalidate if you can" rather than "don't store" - and
+    # with no ETag/Last-Modified there's nothing to revalidate against, so it
+    # just keeps serving the first quote it ever fetched.
+    # These headers explicitly tell every layer (browser, Camo, any CDN in
+    # between) to never store a copy, so each README render triggers a fresh
+    # request to this endpoint and gets a new random quote.
+    response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0, proxy-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
+    # Belt-and-suspenders: strip any validators Flask/Werkzeug might attach,
+    # since a stray ETag/Last-Modified is exactly the kind of thing a cache
+    # will use to justify reusing the old copy.
+    response.headers.pop("ETag", None)
+    response.headers.pop("Last-Modified", None)
+
+    return response
 
 
 @app.route("/")
